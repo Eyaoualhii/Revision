@@ -18,20 +18,27 @@ public class Client implements Comparable<Client>{
         this.code = code;
     }
     public String getNom() {
+
         return nom;
     }
     public void setNom(String nom) {
+
         this.nom = nom;
     }
     public String getPrenom() {
+
         return prenom;
     }
     public void setPrenom(String prenom) {
+
         this.prenom = prenom;
     }
+
     public int hashCode() {
+
         return Objects.hash(code);
     }
+
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (!(obj instanceof Client client)) return  false;

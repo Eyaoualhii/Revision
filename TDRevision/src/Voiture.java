@@ -27,15 +27,20 @@ public class Voiture {
         this.marque = marque;
     }
     public float getPrixLocation() {
+
         return prixLocation;
     }
+
     public void setPrixLocation(float prixLocation) {
         this.prixLocation = prixLocation;
 
     }
     public int hashCode() {
-    return Objects.hash(immariculation,marque);
+
+        return Objects.hash(immariculation,marque);
     }
+
+
     public boolean equals(Object obj) {
     if (this == obj) return true;
     if (!(obj instanceof Voiture voiture)) return  false;

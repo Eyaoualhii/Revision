@@ -7,19 +7,13 @@ public class Agence {
 
     public Agence(String nom) {
         this.nom = nom;
+        this.vs = new ListVoitures();
+        this.ClientVoitureLoue = new HashMap<>();
     }
 
-    public void ajoutVoiture(Voiture v) throws VoitureException, PrixNegatifException {
-
-        if ((this.vs !=null ) && (v.getPrixLocation() >= 0) ){
-
-            vs.ajoutVoiture(v);
-        } else {
-            throw new PrixNegatifException();
-        }
-        }
-
-
+    public void ajoutVoiture(Voiture v) throws VoitureException {
+        vs.ajoutVoiture(v);
+    }
 
     public void suppVoiture(Voiture v)throws VoitureException {
         if (this.ClientVoitureLoue != null) {
@@ -30,11 +24,12 @@ public class Agence {
         }
 
     public void loueClientVoiture(Client cl, Voiture v) throws VoitureException {
-        if (this.ClientVoitureLoue != null) {
-            ListVoitures listeVoitures = ClientVoitureLoue.getOrDefault(cl, new ListVoitures());
-            listeVoitures.ajoutVoiture(v);
-            ClientVoitureLoue.put(cl, listeVoitures);
+        if (!ClientVoitureLoue.containsKey(cl)) {
+            ClientVoitureLoue.put(cl, new ListVoitures());
         }
+
+        ListVoitures listeVoituresLouees = ClientVoitureLoue.get(cl);
+        listeVoituresLouees.ajoutVoiture(v);
     }
 
     public void retourClientVoiture(Client cl, Voiture v) throws VoitureException {
